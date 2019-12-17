@@ -18,17 +18,34 @@ Our objective is to program meters that will measure electrical and physical qua
 
 ![](https://github.com/EvansLiyambo/Digital-electronics-2/blob/master/projects/project/voltage_divider.jpg)
 
+calcuations to obtain actual level of the measured quantity:
+   𝑉out= (𝐴𝐷𝐶 ∗𝑉𝑟𝑒𝑓)/1023
+   where V ref if the reference voltage of the ADC. 
+ 
+ 1. Voltage  is then calculated as follows
+   Vin = Vout(R1+R2)/R2                // actual measured value which is sent to LCD and PUTTY
+   
+   Where R1 and R2 have known resistance.
+ 
+ 2.Resistance is caculated as follows
+   R2=(R1*Vout)/(V_in-Vout)
+   
+   where R1 is known resistance.
+    
+ 3.LDR resistance.
+    LDR = ldr = (R1*V_out)/(V_in-V_out)
+    where R1 is the known resistance .
 
 ## Hardware
 
-Arduino UNO board 
+Arduino UNO board ,
 Arduino LCD keypad shield
 
 
 
 ## Software
 
-Microsoft Visual studio
+Microsoft Visual studio,
 PuTTY SSH Client
 
 ## Schematic
