@@ -1,3 +1,4 @@
+
 /*
  * ---------------------------------------------------------------------
  * Author:      Tomas Fryza
@@ -44,8 +45,8 @@ int main(void)
     /* ADC
      * TODO: Configure ADC reference, clock source, enable ADC module, 
      *       and enable conversion complete interrupt */
-       ADMUX |=  _BV(REFS0);
-       ADMUX &= ~_BV(REFS1);
+        ADMUX |=  _BV(REFS0);
+        ADMUX &= ~_BV(REFS1);
 
         ADMUX |=  _BV(MUX0);
         ADMUX &= ~_BV(MUX1);
@@ -126,24 +127,27 @@ void Voltmeter(void)
     uart_puts(uart_string); 
     uart_puts(" V\r\n");
 
-/*  lcd_puts("Voltmeter");
-    lcd_gotoxy(0,1);*/
+    lcd_puts("Voltmeter");
+    lcd_gotoxy(0,1);
     lcd_puts(uart_string); 
-    lcd_gotoxy(5,0);
-    lcd_puts("V ");
+    lcd_gotoxy(8,1);
+    lcd_puts("V        ");
 }
 
 //Amperemeter
 void Ammeter(void)
-{     float value;
+{
     float V_out = 0;
     float I_in=0;
     float V_nominal = 2.500;
     float constant = 0.185;
     char uart_string[10];
+    
 
 	// Read 10-bit ACD value and converting it to voltage (ADC*5/1023)
-    V_out = value*0.004888;
+
+
+    V_out = ADC*0.004888;
 
     // Calculating the input voltage
     I_in = ((V_out-V_nominal)/constant);
@@ -156,18 +160,18 @@ void Ammeter(void)
     uart_puts(uart_string); 
     uart_puts("A\r\n");
 
-  //lcd_puts("Amp meter");
-    lcd_gotoxy(8,0);
+    lcd_puts("Amp meter");
+    lcd_gotoxy(0,1);
     lcd_puts(uart_string); 
-    lcd_gotoxy(12,0);
-    lcd_puts("A");
+    lcd_gotoxy(8,1);
+    lcd_puts("A        ");
 
 }
 
 
 //Ohmmeter
 void Ohmmeter(void)
-{     float value;
+{
      float V_out = 0;
      float V_in = 5;
      float R1 = 10000;
@@ -175,7 +179,7 @@ void Ohmmeter(void)
      char uart_string[10];
 
 	// Read 10-bit ACD value and converting it to voltage (ADC*5/1023)
-    V_out = value*0.004888;
+    V_out = ADC*0.004888;
 
     // Calculating the input voltage
     R2 = (R1*V_out)/(V_in-V_out);
@@ -188,11 +192,11 @@ void Ohmmeter(void)
     uart_puts(uart_string); 
     uart_puts(" Ohms\r\n");
 
-    //lcd_puts("Ohmmeter");
+    lcd_puts("Ohmmeter");
     lcd_gotoxy(0,1);
     lcd_puts(uart_string); 
-    lcd_gotoxy(5,1);
-    lcd_puts("O");
+    lcd_gotoxy(7,1);
+    lcd_puts("Ohms       ");
     }
     else{
     R2 = R2/1000;
@@ -202,11 +206,11 @@ void Ohmmeter(void)
     uart_puts(uart_string); 
     uart_puts(" Kilo Ohms\r\n");
 
-    //lcd_puts("Ohmmeter");
+    lcd_puts("Ohmmeter");
     lcd_gotoxy(0,1);
     lcd_puts(uart_string); 
-    lcd_gotoxy(5,1);
-    lcd_puts("KO");
+    lcd_gotoxy(7,1);
+    lcd_puts("Kilo Ohms       ");
     }
     //itoa(R2, uart_string, 10);
 }
@@ -214,16 +218,16 @@ void Ohmmeter(void)
 
 //Luxmeter
 void Luxmeter(void)
-{    float value;
+{
     float V_out = 0;
     float V_in = 5;
-    uint16_t R1 = 1000;
+    uint16_t R1 = 10000;
     float ldr;
     //float lux;
     char uart_string[4];
 
 	// Read 10-bit ACD value and converting it to voltage (ADC*5/1023)
-     V_out = value*0.004888;
+     V_out = ADC*0.004888;
 
     // Calculating the input voltage
      ldr = (R1*V_out)/(V_in-V_out);
@@ -238,11 +242,11 @@ void Luxmeter(void)
     uart_puts(uart_string); 
     uart_puts(" Ohms\r\n");
 
-   // lcd_puts("LDR Resistance");
-    lcd_gotoxy(8,1);
+    lcd_puts("LDR Resistance");
+    lcd_gotoxy(0,1);
     lcd_puts(uart_string); 
-    lcd_gotoxy(13,1);
-    lcd_puts("O");
+    lcd_gotoxy(7,1);
+    lcd_puts("Ohms       ");
     }
     else{
     ldr = ldr/1000;
@@ -252,39 +256,61 @@ void Luxmeter(void)
     uart_puts(uart_string); 
     uart_puts(" Kilo Ohms\r\n");
 
-    //lcd_puts("LDR Resistance");
-    lcd_gotoxy(8,1);
+    lcd_puts("LDR Resistance");
+    lcd_gotoxy(0,1);
     lcd_puts(uart_string); 
-    lcd_gotoxy(13,1);
-    lcd_puts("KO");
+    lcd_gotoxy(7,1);
+    lcd_puts("Kilo Ohms       ");
     }
 }
 
 
 ISR(ADC_vect)
-{     
-     
-     float  value = ADC ;
-    switch (ADMUX)
-    {
-    case 0x81:
-        Ohmmeter();
-       // ADMUX = 0x82;
-        break;
-    case 0x82:
-        Luxmeter();
-        ADMUX = 0x83;
-        break;    
-    case 0x83:
-        Voltmeter();
-        ADMUX = 0x84;
-        break;    
-    case 0x84:
-        Ammeter();
-        ADMUX = 0x81;
-        break;
-    default:
-        break;
-    }
+{
+  //  uint16_t value = 0;
+     //char lcd_string[4] ;
+
+
+   //  value = ADC;
+
+    // TODO: Update LCD and UART transmiter
+    //itoa(value , lcd_string, 10);
+    
+    
+    //if(value < 90){
+         Ohmmeter();
+   // }
+    //else if (value < 110){
+         //Luxmeter();
+    //}
+
+   /// else{
+    
+   // lcd_puts("Slc quantity");
+    //}
+
+   
+    
+    
+    /*
+     float V_out = 0;
+     float V_in = 5;
+     float R1 = 10000;
+     float R2;
+     char uart_string[10];
+
+	// Read 10-bit ACD value and converting it to voltage (ADC*5/1023)
+    V_out = ADC*0.004888;
+
+    // Calculating the input voltage
+    R2 = (R1*V_out)/(V_in-V_out);
+
+    // TODO: Update LCD and UART transmiter
+       
+    uart_puts("Resistance = ");
+    dtostrf(R2, 5, 3, uart_string);
+    //itoa(R2, uart_string, 10);  
+    uart_puts(uart_string); 
+    uart_puts(" Ohms\r\n");*/
 
 }
