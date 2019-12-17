@@ -41,19 +41,13 @@ calcuations to obtain actual level of the measured quantity:
 Arduino UNO board ,
 Arduino LCD keypad shield
 
-
-
 ## Software
 
 Microsoft Visual studio,
 PuTTY SSH Client
 
-## Schematic
-
-
-
 ## References
 
 1. Microchip, [AVR 8-bit Toolchain for Windows, Linux, Mac OS X](https://www.microchip.com/mplab/avr-support/avr-and-arm-toolchains-c-compilers)
 2. UART library developed by Peter Fleury,http://homepage.hispeed.ch/peterfleury/avr-software.html
-
+3. Video - https://www.youtube.com/watch?v=jFEycrZ0ezA&fbclid=IwAR0YLZLkZ3AY4rmHj69GYbvOjTtShyFzoAgjNzxsEtYiQ4EieZ8vyoofHTg
