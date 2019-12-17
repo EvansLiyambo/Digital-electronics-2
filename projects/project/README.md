@@ -16,14 +16,14 @@ Our objective is to program meters that will measure electrical and physical qua
 
 ## Schematic
 
-![](https://github.com/EvansLiyambo/Digital-electronics-2/blob/master/projects/project/voltage_divider.jpg)
+![voltage divider](https://github.com/EvansLiyambo/Digital-electronics-2/blob/master/projects/project/voltage_divider.png)
 
 calcuations to obtain actual level of the measured quantity:
    𝑉out= (𝐴𝐷𝐶 ∗𝑉𝑟𝑒𝑓)/1023
    where V ref if the reference voltage of the ADC. 
  
- 1. Voltage  is then calculated as follows
-   Vin = Vout(R1+R2)/R2                // actual measured value which is sent to LCD and PUTTY
+ 1.Voltage  is then calculated as follows
+   Vin = Vout(R1+R2)/R2               
    
    Where R1 and R2 have known resistance.
  
