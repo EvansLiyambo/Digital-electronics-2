@@ -31,13 +31,13 @@ calcuations to obtain actual level of the measured quantity:
  
     R2 = (R1*V_out)/(V_in-V_out)
    
-     where R1 is known resistance.
+    Where R1 is known resistance.
     
  3.LDR resistance is calculated as follows:
    
     LDR = (R1*V_out)/(V_in-V_out)
-   
-    where R1 is the known resistance
+  
+    Where R1 is the known resistance
 
 ## Hardware
 
