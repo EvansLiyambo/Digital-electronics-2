@@ -23,7 +23,8 @@ calcuations to obtain actual level of the measured quantity:
  
  1.Voltage  is then calculated as follows:
  
-   V_in = V_out(R1+R2)/R2               
+   V_in = V_out(R1+R2)/R2    
+   
    Where R1 and R2 have known resistance.
  
  2.Resistance is caculated as follows:
