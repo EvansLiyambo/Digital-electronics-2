@@ -19,25 +19,25 @@ Our objective is to program meters that will measure electrical and physical qua
 ![voltage divider](https://github.com/EvansLiyambo/Digital-electronics-2/blob/master/projects/project/voltage_divider.png)
 
 calcuations to obtain actual level of the measured quantity:
-   V_out = (ADC*Vref)/1023
+    V_out = (ADC*Vref)/1023
  
  1.Voltage  is then calculated as follows:
  
-   V_in = V_out(R1+R2)/R2    
+    V_in = V_out(R1+R2)/R2    
    
-   Where R1 and R2 have known resistance.
+    Where R1 and R2 have known resistance.
  
  2.Resistance is caculated as follows:
  
-   R2 = (R1*V_out)/(V_in-V_out)
+    R2 = (R1*V_out)/(V_in-V_out)
    
-   where R1 is known resistance.
+     where R1 is known resistance.
     
  3.LDR resistance is calculated as follows:
    
-   LDR = (R1*V_out)/(V_in-V_out)
+    LDR = (R1*V_out)/(V_in-V_out)
    
-   where R1 is the known resistance
+    where R1 is the known resistance
 
 ## Hardware
 
