@@ -95,7 +95,6 @@ void Luxmeter(void)
     float V_in = 5;
     uint16_t R1 = 10000;
     float ldr;
-    //float lux;
     char uart_string[4];
 
 	// Read 10-bit ACD value and converting it to voltage (ADC*5/1023)
@@ -103,14 +102,13 @@ void Luxmeter(void)
 
     // Calculating the input voltage
      ldr = (R1*V_out)/(V_in-V_out);
-     //lux = 500/ldr;
+    
 
-    // TODO: Update LCD and UART transmiter
+    //Update LCD and UART transmiter
        
      if(ldr<1000){
     uart_puts("");
     dtostrf(ldr, 5, 3, uart_string);
-    //itoa(R2, uart_string, 10);  
     uart_puts(uart_string); 
     uart_puts(" Ohms\r\n");
 
@@ -124,7 +122,6 @@ void Luxmeter(void)
     ldr = ldr/1000;
     uart_puts("");
     dtostrf(ldr, 5, 3, uart_string);
-    //itoa(R2, uart_string, 10);  
     uart_puts(uart_string); 
     uart_puts(" Kilo Ohms\r\n");
 
