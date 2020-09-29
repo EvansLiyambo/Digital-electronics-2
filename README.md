@@ -1,2 +1,2 @@
-# Digital-electronics-2
+# Digital-electronics-2/Microcontorllers and embedded systems 
 AVR-repository
